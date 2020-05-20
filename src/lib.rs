@@ -1,6 +1,3 @@
-extern crate c2_chacha;
-extern crate rand;
-
 mod cryptography;
 mod keys;
 
