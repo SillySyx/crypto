@@ -10,7 +10,7 @@ fn hash_value(seed: &str) -> u64 {
     hasher.finish()
 }
 
-pub fn generate_key_from_seed(seed: &str) -> Result<Vec<u8>, String> {
+pub fn generate_key_from_seed(seed: &str) -> Result<[u8; 32], String> {
     let hash = hash_value(seed);
 
     let mut buffer = [0u8; 32];
@@ -18,10 +18,10 @@ pub fn generate_key_from_seed(seed: &str) -> Result<Vec<u8>, String> {
     let mut rng: StdRng = SeedableRng::seed_from_u64(hash);
     rng.fill_bytes(&mut buffer);
 
-    Ok(buffer.to_vec())
+    Ok(buffer)
 }
 
-pub fn generate_iv_from_seed(seed: &str) -> Result<Vec<u8>, String> {
+pub fn generate_iv_from_seed(seed: &str) -> Result<[u8; 8], String> {
     let hash = hash_value(seed);
 
     let mut buffer = [0u8; 8];
@@ -29,5 +29,5 @@ pub fn generate_iv_from_seed(seed: &str) -> Result<Vec<u8>, String> {
     let mut rng: StdRng = SeedableRng::seed_from_u64(hash);
     rng.fill_bytes(&mut buffer);
 
-    Ok(buffer.to_vec())
+    Ok(buffer)
 }
