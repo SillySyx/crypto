@@ -15,9 +15,9 @@ fn should_be_possible_to_generate_key_from_seed() -> Result<(), Box<dyn Error>> 
 #[test]
 fn should_be_possible_to_generate_iv_from_seed() -> Result<(), Box<dyn Error>> {
     let seed = "resource that i base my iv on";
-    let key = generate_iv_from_seed(seed)?;
+    let iv = generate_iv_from_seed(seed)?;
 
-    assert!(key == [92, 129, 36, 125, 146, 89, 200, 180]);
+    assert!(iv == [92, 129, 36, 125, 146, 89, 200, 180]);
 
     Ok(())
 }
